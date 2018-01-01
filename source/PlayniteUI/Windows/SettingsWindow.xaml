@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:pui="clr-namespace:PlayniteUI"
+        xmlns:pcmd="clr-namespace:PlayniteUI.Commands"
         xmlns:pn="clr-namespace:Playnite;assembly=Playnite"
         xmlns:steam="clr-namespace:Playnite.Providers.Steam;assembly=Playnite"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -221,8 +222,14 @@
                                       ItemsSource="{Binding SelectedItem.Profiles, ElementName=ComboSkins}" />
                         </Grid>
 
-                        <TextBlock Text="{DynamicResource SettingsSkinChangeRestart}" Margin="0,5,0,10"
-                                   FontStyle="Italic"/>
+                        <TextBlock Margin="0,5,0,15">
+                            <Hyperlink Command="{x:Static pcmd:GeneralCommands.NavigateUrlCommand}"
+                                       CommandParameter="">
+                                <Run Text="{DynamicResource SettingsGetThemes}" />
+                            </Hyperlink>
+                        </TextBlock>
+
+                        <TextBlock Text="{DynamicResource SettingsSkinChangeRestart}" FontStyle="Italic"/>
 
                         <!--<Grid Margin="0,10,0,0">
                             <Grid.ColumnDefinitions>
@@ -252,7 +259,7 @@
                             </ComboBox>
                         </Grid>-->
                         <CheckBox Content="{DynamicResource SettingsAsyncImageLoading}" ToolTip="{DynamicResource SettingsAsyncImageLoadingTooltip}"
-                                  Margin="0,15,0,0"
+                                  Margin="0,40,0,0"
                                   Name="CheckAsyncImages" IsChecked="{Binding Settings.AsyncImageLoading}"/>
                         <CheckBox Content="{DynamicResource SettingsShowNameEmptyCover}" Margin="0,15,0,0"
                                   Name="CheckNameEmptyCover" IsChecked="{Binding Settings.ShowNameEmptyCover}"/>
